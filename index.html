@@ -16,6 +16,7 @@
 				--text: #ffffff;
 				--footer: #0b0e1a;
 			}
+			*, *::before, *::after { box-sizing: border-box; }
 			html, body {
 				height: 100%;
 				margin: 0;
@@ -48,14 +49,14 @@
 				display: inline-flex;
 				align-items: center;
 				gap: 22px;
-				text-decoration: none;
 				color: inherit;
+				/* preserve anchor look but non-interactive */
+				text-decoration: none;
 			}
 			.logo-top, .logo-btm {
 				background: #000;
 				border-radius: 12px;
 				padding: 8px;
-				box-sizing: border-box;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -140,6 +141,7 @@
 				margin-top: 48px;
 				color: #fff;
 			}
+
 			/* Games Section */
 			.games-container {
 				display: flex;
@@ -147,8 +149,13 @@
 				gap: 20px;
 				justify-content: center;
 				margin-top: 20px;
+				/* make cards in the row stretch to same height */
+				align-items: stretch;
 			}
 			.game-card {
+				display: flex;
+				flex-direction: column;
+				/* allow shrink/grow but prefer three-up layout */
 				flex: 0 1 250px;
 				background: var(--card-2);
 				border-radius: 12px;
@@ -157,6 +164,8 @@
 				color: #fff;
 				box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
 				transition: transform 0.3s ease, box-shadow 0.3s ease;
+				/* ensure consistent vertical rhythm on desktop so buttons align across rows */
+				min-height: 420px;
 			}
 			.game-card:hover {
 				transform: translateY(-5px) scale(1.03);
@@ -167,10 +176,18 @@
 				height: 180px;
 				object-fit: cover;
 				display: block;
+				/* keep image out of the flexible content so it doesn't affect button placement */
+				flex: 0 0 180px;
 			}
 			.game-content {
+				/* column flex so we can push the button to the bottom */
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
 				padding: 15px;
 				color: #fff;
+				/* fill available vertical space */
+				flex: 1 1 auto;
 			}
 			.game-title {
 				font-size: 24px;
@@ -180,14 +197,25 @@
 			.game-description {
 				font-size: 14px;
 				color: #fff;
-				margin: 0;
+				margin: 0 0 12px 0;
+			}
+			/* Make the Play button sit at the bottom of the card content */
+			.play-btn {
+				margin-top: auto;
+				/* center the button horizontally */
+				align-self: center;
+			}
+
+			@media (max-width: 900px) {
+				.game-card { min-height: 380px; }
 			}
 			@media (max-width: 520px) {
 				.logo-top { width: 120px; height: 120px; }
 				.logo-btm { width: 80px; height: 80px; }
 				header h1 { font-size: 22px; }
-				.game-card { flex: 1 1 100%; }
-				.game-image { height: auto; }
+				/* on narrow screens, remove the forced min-height so cards flow naturally */
+				.game-card { flex: 1 1 100%; min-height: unset; }
+				.game-image { height: auto; flex: 0 0 auto; }
 				.roles { gap: 12px; }
 				.role { padding: 12px; }
 				main { padding: 40px 15px; }
@@ -198,7 +226,8 @@
 	<body>
 		<a class="skip-link" href="#main">Skip to main content</a>
 		<header>
-			<a href="/" class="brand">
+			<!-- Brand is intentionally non-clickable per request -->
+			<div class="brand" aria-label="Spawnify Games">
 				<span class="logo-top">
 					<img src="https://i.pinimg.com/236x/62/fe/9a/62fe9ada7e53076921253d25b67608d2.jpg" alt="Spawnify Games logo" class="logo-img">
 				</span>
@@ -206,7 +235,7 @@
 					<h1>Spawnify Games</h1>
 					<p>where every idea spawns</p>
 				</div>
-			</a>
+			</div>
 		</header>
 		<main id="main">
 			<section>
@@ -260,35 +289,35 @@
 				<h2>Games</h2>
 				<div class="games-container">
 					<div class="game-card">
-						<img src="https://i.postimg.cc/R0GmDQVW/race.png" alt="Race and Race" class="game-image">
+						<img src="https://i.postimg.cc/R0GmDQVW/race.png" alt="Race and Race" class="game-image" loading="lazy">
 						<div class="game-content">
 							<h3 class="game-title">Race and Race</h3>
 							<p class="game-description">Drive fast and beat the clock in this exciting Roblox racing game.</p>
-							<a href="https://www.roblox.com/games/100126264513823/Race-and-race" target="_blank" class="play-btn">Play Now</a>
+							<a href="https://www.roblox.com/games/100126264513823/Race-and-race" target="_blank" class="play-btn" rel="noopener noreferrer">Play Now</a>
 						</div>
 					</div>
 					<div class="game-card">
-						<img src="https://i.postimg.cc/NFC7JnWB/image.jpg" alt="Islands of Work and Wonder" class="game-image">
+						<img src="https://i.postimg.cc/NFC7JnWB/image.jpg" alt="Islands of Work and Wonder" class="game-image" loading="lazy">
 						<div class="game-content">
 							<h3 class="game-title">Islands of Work and Wonder</h3>
 							<p class="game-description">Work as hard as you can, sell your loot, and explore the islands.</p>
-							<a href="https://www.roblox.com/games/92743955973030/islands-of-work-and-wonder" target="_blank" class="play-btn">Play Now</a>
+							<a href="https://www.roblox.com/games/92743955973030/islands-of-work-and-wonder" target="_blank" class="play-btn" rel="noopener noreferrer">Play Now</a>
 						</div>
 					</div>
 					<div class="game-card">
-						<img src="https://i.postimg.cc/1RKq9b79/image-(2).jpg" alt="The Bob [Horror]" class="game-image">
+						<img src="https://i.postimg.cc/1RKq9b79/image-(2).jpg" alt="The Bob [Horror]" class="game-image" loading="lazy">
 						<div class="game-content">
 							<h3 class="game-title">The Bob [Horror]</h3>
 							<p class="game-description">Find the safe house and try to survive.</p>
-							<a href="https://www.roblox.com/games/104156688515752/The-Bob" target="_blank" class="play-btn">Play Now</a>
+							<a href="https://www.roblox.com/games/104156688515752/The-Bob" target="_blank" class="play-btn" rel="noopener noreferrer">Play Now</a>
 						</div>
 					</div>
 					<div class="game-card">
-						<img src="https://i.postimg.cc/K8mFmsWC/image-(3).jpg" alt="Tower of Heights" class="game-image">
+						<img src="https://i.postimg.cc/K8mFmsWC/image-(3).jpg" alt="Tower of Heights" class="game-image" loading="lazy">
 						<div class="game-content">
 							<h3 class="game-title">Tower of Heights</h3>
 							<p class="game-description">Get to the top of the tower and decide where you will go next.</p>
-							<a href="https://www.roblox.com/games/101953228803213/Tower-of-Heights" target="_blank" class="play-btn">Play Now</a>
+							<a href="https://www.roblox.com/games/101953228803213/Tower-of-Heights" target="_blank" class="play-btn" rel="noopener noreferrer">Play Now</a>
 						</div>
 					</div>
 				</div>
