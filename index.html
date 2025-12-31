@@ -15,6 +15,7 @@
 				--card-2: #232861;
 				--text: #ffffff;
 				--footer: #0b0e1a;
+				--discord: #5865F2;
 			}
 			*, *::before, *::after { box-sizing: border-box; }
 			html, body {
@@ -118,19 +119,30 @@
 				color: #fff;
 				margin-top: 0;
 			}
-			.join-btn, .play-btn {
-				display: inline-block;
+			.join-btn, .play-btn, .discord-btn {
+				display: inline-flex;
+				gap: 10px;
+				align-items: center;
 				margin-top: 20px;
-				padding: 12px 25px;
+				padding: 12px 18px;
 				background: var(--accent);
 				color: #fff;
 				text-decoration: none;
 				border-radius: 8px;
 				font-weight: bold;
 				transition: background 0.2s ease, transform 0.2s ease;
+				border: none;
+				cursor: pointer;
 			}
 			.join-btn:hover, .play-btn:hover {
 				background: var(--accent-2);
+				transform: translateY(-2px);
+			}
+			.discord-btn {
+				background: var(--discord);
+			}
+			.discord-btn:hover {
+				filter: brightness(1.05);
 				transform: translateY(-2px);
 			}
 			footer {
@@ -220,6 +232,9 @@
 				.role { padding: 12px; }
 				main { padding: 40px 15px; }
 				.games-container { gap: 15px; }
+				/* stack join buttons on small screens */
+				.join-actions { display: flex; flex-direction: column; gap: 12px; }
+				.join-actions a { align-self: center; }
 			}
 		</style>
 	</head>
@@ -326,7 +341,18 @@
 				<h2>Join Spawnify</h2>
 				<div class="card">
 					<p>Join our Roblox group and help turn ideas into games.</p>
-					<a class="join-btn" href="https://www.roblox.com/communities/35084297/Spawnify-Games" target="_blank" rel="noopener noreferrer"> Join Our Roblox Group </a>
+					<div class="join-actions" style="display:flex;gap:12px;flex-wrap:wrap;">
+						<a class="join-btn" href="https://www.roblox.com/communities/35084297/Spawnify-Games" target="_blank" rel="noopener noreferrer" aria-label="Join our Roblox group">Join Our Roblox Group</a>
+
+						<!-- Discord button -->
+						<a class="discord-btn" href="https://discord.gg/XKzukpT9tp" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord server">
+							<!-- Inline Discord SVG icon -->
+							<svg width="18" height="18" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+								<path d="M60.104 4.552A58.807 58.807 0 0 0 45.723.9a41.165 41.165 0 0 0-1.976 4.06 55.47 55.47 0 0 0-14.9 0A41.16 41.16 0 0 0 25.873.9 58.795 58.795 0 0 0 11.49 4.552C1.03 18.636-1.972 32.59.24 46.38a60.83 60.83 0 0 0 18.462 8.88c1.388-1.92 2.642-3.924 3.747-5.98-5.332-1.6-10.41-4.028-15.05-7.18 1.266-.93 2.5-1.91 3.674-2.94 8.192 4.808 17.08 7.572 26.08 7.572 8.99 0 17.86-2.76 26.05-7.57 1.17 1.03 2.4 2 3.664 2.93-4.639 3.15-9.72 5.58-15.05 7.18 1.108 2.05 2.36 4.06 3.75 5.98A60.83 60.83 0 0 0 71 46.38c2.21-13.79-.79-27.75-10.896-41.828z" fill="#fff"/>
+							</svg>
+							<span>Join Discord</span>
+						</a>
+					</div>
 				</div>
 			</section>
 		</main>
