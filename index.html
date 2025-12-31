@@ -7,241 +7,106 @@
 		<meta name="description" content="Spawnify Games is a Roblox development group creating fun, original, and creative experiences. Join us to build, script, and design new worlds." />
 		<meta name="theme-color" content="#0f1220" />
 		<style>
-			:root {
-				--bg: #0f1220;
-				--card: #1a1f3c;
-				--accent: #6c63ff;
-				--accent-2: #3b82f6;
-				--card-2: #232861;
-				--text: #ffffff;
-				--footer: #0b0e1a;
-				--discord: #5865F2;
+			:root{
+				--bg:#0f1220;
+				--card:#1a1f3c;
+				--accent:#6c63ff;
+				--accent-2:#3b82f6;
+				--card-2:#232861;
+				--text:#ffffff;
+				--footer:#0b0e1a;
+				--discord:#5865F2;
+				--roblox:#3b82f6; /* blue version requested earlier */
+				--youtube:#FF0000;
 			}
-			*, *::before, *::after { box-sizing: border-box; }
-			html, body {
-				height: 100%;
-				margin: 0;
-				font-family: Arial, Helvetica, sans-serif;
-				background: var(--bg);
-				color: var(--text);
-				line-height: 1.5;
+			*,*::before,*::after{box-sizing:border-box}
+			html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+			.skip-link{position:absolute;left:-9999px;top:-9999px}
+			.skip-link:focus{left:12px;top:12px;background:#fff;color:#000;padding:8px 12px;border-radius:6px;text-decoration:none;z-index:9999}
+			header{background:linear-gradient(135deg,var(--accent),var(--accent-2));padding:34px 20px;text-align:center}
+			.brand{display:inline-flex;align-items:center;gap:22px;color:inherit;text-decoration:none}
+			.logo-top,.logo-btm{background:#000;border-radius:12px;padding:8px;display:flex;align-items:center;justify-content:center}
+			.logo-top{width:180px;height:180px}
+			.logo-btm{width:120px;height:120px}
+			.logo-img{width:100%;height:100%;object-fit:contain;display:block}
+			header h1{font-size:36px;margin:0;color:#fff}
+			header p{font-size:18px;margin:6px 0 0;color:#fff}
+			main{padding:50px 20px;max-width:900px;margin:auto}
+			h2{color:#fff;margin-bottom:10px}
+			.card{background:var(--card);padding:20px;border-radius:10px;margin-top:20px;color:#fff}
+
+			.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:10px}
+			.role{background:var(--card-2);padding:15px;border-radius:10px;transition:transform .3s ease,box-shadow .3s ease,background .3s ease;color:#fff}
+			.role:hover{transform:translateY(-5px) scale(1.03);box-shadow:0 15px 25px rgba(108,99,255,.5);background:#2b3170}
+			.role h3,.role p{color:#fff;margin-top:0}
+
+			/* Buttons - uniform sizing */
+			.join-btn,.play-btn,.discord-btn,.youtube-btn{
+				display:inline-flex;
+				gap:10px;
+				align-items:center;
+				margin-top:20px;
+				padding:12px 18px;
+				background:var(--accent);
+				color:#fff;
+				text-decoration:none;
+				border-radius:8px;
+				font-weight:bold;
+				transition:background .2s ease,transform .2s ease;
+				border:none;
+				cursor:pointer;
+				vertical-align:middle;
+				line-height:1;
 			}
-			.skip-link {
-				position: absolute;
-				left: -9999px;
-				top: -9999px;
+			.join-btn:hover,.play-btn:hover{background:var(--accent-2);transform:translateY(-2px)}
+			.discord-btn{background:var(--discord)}
+			.discord-btn:hover{filter:brightness(1.05);transform:translateY(-2px)}
+			.youtube-btn{background:var(--youtube)}
+			.youtube-btn:hover{filter:brightness(.95);transform:translateY(-2px)}
+
+			/* specific override: make Roblox button have white background and dark text */
+			.roblox-btn{
+				background:#ffffff;
+				color:#000;
 			}
-			.skip-link:focus {
-				left: 12px;
-				top: 12px;
-				background: #fff;
-				color: #000;
-				padding: 8px 12px;
-				border-radius: 6px;
-				text-decoration: none;
-				z-index: 9999;
-			}
-			header {
-				background: linear-gradient(135deg, var(--accent), var(--accent-2));
-				padding: 34px 20px;
-				text-align: center;
-			}
-			.brand {
-				display: inline-flex;
-				align-items: center;
-				gap: 22px;
-				color: inherit;
-				/* preserve anchor look but non-interactive */
-				text-decoration: none;
-			}
-			.logo-top, .logo-btm {
-				background: #000;
-				border-radius: 12px;
-				padding: 8px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-			.logo-top { width: 180px; height: 180px; }
-			.logo-btm { width: 120px; height: 120px; }
-			.logo-img {
-				width: 100%;
-				height: 100%;
-				object-fit: contain;
-				display: block;
-			}
-			header h1 {
-				font-size: 36px;
-				margin: 0;
-				color: #fff;
-			}
-			header p {
-				font-size: 18px;
-				margin: 6px 0 0;
-				color: #fff;
-			}
-			main {
-				padding: 50px 20px;
-				max-width: 900px;
-				margin: auto;
-			}
-			h2 {
-				color: #fff;
-				margin-bottom: 10px;
-			}
-			.card {
-				background: var(--card);
-				padding: 20px;
-				border-radius: 10px;
-				margin-top: 20px;
-				color: #fff;
-			}
-			.roles {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-				gap: 15px;
-				margin-top: 10px;
-			}
-			.role {
-				background: var(--card-2);
-				padding: 15px;
-				border-radius: 10px;
-				transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-				cursor: default;
-				color: #fff;
-			}
-			.role:hover {
-				transform: translateY(-5px) scale(1.03);
-				box-shadow: 0 15px 25px rgba(108, 99, 255, 0.5);
-				background: #2b3170;
-			}
-			.role h3, .role p {
-				color: #fff;
-				margin-top: 0;
-			}
-			.join-btn, .play-btn, .discord-btn {
-				display: inline-flex;
-				gap: 10px;
-				align-items: center;
-				margin-top: 20px;
-				padding: 12px 18px;
-				background: var(--accent);
-				color: #fff;
-				text-decoration: none;
-				border-radius: 8px;
-				font-weight: bold;
-				transition: background 0.2s ease, transform 0.2s ease;
-				border: none;
-				cursor: pointer;
-			}
-			.join-btn:hover, .play-btn:hover {
-				background: var(--accent-2);
-				transform: translateY(-2px);
-			}
-			.discord-btn {
-				background: var(--discord);
-			}
-			.discord-btn:hover {
-				filter: brightness(1.05);
-				transform: translateY(-2px);
-			}
-			footer {
-				text-align: center;
-				padding: 28px;
-				background: var(--footer);
-				font-size: 14px;
-				margin-top: 48px;
-				color: #fff;
+			.roblox-btn:hover{
+				background:#f2f4f7;
+				color:#000;
 			}
 
-			/* Games Section */
-			.games-container {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 20px;
-				justify-content: center;
-				margin-top: 20px;
-				/* make cards in the row stretch to same height */
-				align-items: stretch;
-			}
-			.game-card {
-				display: flex;
-				flex-direction: column;
-				/* allow shrink/grow but prefer three-up layout */
-				flex: 0 1 250px;
-				background: var(--card-2);
-				border-radius: 12px;
-				overflow: hidden;
-				text-align: center;
-				color: #fff;
-				box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
-				transition: transform 0.3s ease, box-shadow 0.3s ease;
-				/* ensure consistent vertical rhythm on desktop so buttons align across rows */
-				min-height: 420px;
-			}
-			.game-card:hover {
-				transform: translateY(-5px) scale(1.03);
-				box-shadow: 0 15px 25px rgba(108, 99, 255, 0.5);
-			}
-			.game-image {
-				width: 100%;
-				height: 180px;
-				object-fit: cover;
-				display: block;
-				/* keep image out of the flexible content so it doesn't affect button placement */
-				flex: 0 0 180px;
-			}
-			.game-content {
-				/* column flex so we can push the button to the bottom */
-				display: flex;
-				flex-direction: column;
-				justify-content: flex-start;
-				padding: 15px;
-				color: #fff;
-				/* fill available vertical space */
-				flex: 1 1 auto;
-			}
-			.game-title {
-				font-size: 24px;
-				margin: 0 0 8px 0;
-				color: #fff;
-			}
-			.game-description {
-				font-size: 14px;
-				color: #fff;
-				margin: 0 0 12px 0;
-			}
-			/* Make the Play button sit at the bottom of the card content */
-			.play-btn {
-				margin-top: auto;
-				/* center the button horizontally */
-				align-self: center;
-			}
+			/* icon sizing: keep icons visually consistent */
+			.join-actions svg{display:block;width:20px;height:20px;flex:0 0 20px}
+			.discord-btn svg{width:20px;height:20px;flex:0 0 20px}
+			.roblox-icon { width:20px; height:20px; flex:0 0 20px; display:block }
 
-			@media (max-width: 900px) {
-				.game-card { min-height: 380px; }
-			}
-			@media (max-width: 520px) {
-				.logo-top { width: 120px; height: 120px; }
-				.logo-btm { width: 80px; height: 80px; }
-				header h1 { font-size: 22px; }
-				/* on narrow screens, remove the forced min-height so cards flow naturally */
-				.game-card { flex: 1 1 100%; min-height: unset; }
-				.game-image { height: auto; flex: 0 0 auto; }
-				.roles { gap: 12px; }
-				.role { padding: 12px; }
-				main { padding: 40px 15px; }
-				.games-container { gap: 15px; }
-				/* stack join buttons on small screens */
-				.join-actions { display: flex; flex-direction: column; gap: 12px; }
-				.join-actions a { align-self: center; }
+			footer{text-align:center;padding:28px;background:var(--footer);font-size:14px;margin-top:48px;color:#fff}
+
+			/* Games layout */
+			.games-container{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-top:20px;align-items:stretch}
+			.game-card{display:flex;flex-direction:column;flex:0 1 250px;background:var(--card-2);border-radius:12px;overflow:hidden;color:#fff;box-shadow:0 5px 15px rgba(108,99,255,.3);transition:transform .3s ease,box-shadow .3s ease;min-height:420px}
+			.game-card:hover{transform:translateY(-5px) scale(1.03);box-shadow:0 15px 25px rgba(108,99,255,.5)}
+			.game-image{width:100%;height:180px;object-fit:cover;display:block;flex:0 0 180px}
+			.game-content{display:flex;flex-direction:column;padding:15px;color:#fff;flex:1 1 auto}
+			.game-title{font-size:24px;margin:0 0 8px 0}
+			.game-description{font-size:14px;margin:0 0 12px 0}
+			.play-btn{margin-top:auto;align-self:center}
+
+			@media (max-width:900px){.game-card{min-height:380px}}
+			@media (max-width:520px){
+				.logo-top{width:120px;height:120px}
+				.logo-btm{width:80px;height:80px}
+				header h1{font-size:22px}
+				.game-card{flex:1 1 100%;min-height:unset}
+				.game-image{height:auto;flex:0 0 auto}
+				.join-actions{display:flex;flex-direction:column;gap:12px}
+				.join-actions a{align-self:center}
 			}
 		</style>
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to main content</a>
+
 		<header>
-			<!-- Brand is intentionally non-clickable per request -->
 			<div class="brand" aria-label="Spawnify Games">
 				<span class="logo-top">
 					<img src="https://i.pinimg.com/236x/62/fe/9a/62fe9ada7e53076921253d25b67608d2.jpg" alt="Spawnify Games logo" class="logo-img">
@@ -252,15 +117,15 @@
 				</div>
 			</div>
 		</header>
+
 		<main id="main">
 			<section>
 				<h2>About Us</h2>
 				<div class="card">
-					<p>
-						Spawnify Games is a Roblox development group dedicated to creating fun, original, and creative experiences. We turn ideas into playable worlds and encourage innovation, teamwork, and learning.
-					</p>
+					<p>Spawnify Games is a Roblox development group dedicated to creating fun, original, and creative experiences. We turn ideas into playable worlds and encourage innovation, teamwork, and learning.</p>
 				</div>
 			</section>
+
 			<section>
 				<h2>What We Do</h2>
 				<div class="card">
@@ -271,35 +136,19 @@
 					</ul>
 				</div>
 			</section>
+
 			<section>
 				<h2>Team Roles</h2>
 				<div class="roles">
-					<div class="role">
-						<h3>Owner</h3>
-						<p>Leads the group and sets the vision.</p>
-					</div>
-					<div class="role">
-						<h3>Developers</h3>
-						<p>Create scripts and game systems.</p>
-					</div>
-					<div class="role">
-						<h3>Builders</h3>
-						<p>Design maps and environments.</p>
-					</div>
-					<div class="role">
-						<h3>UI / Designers</h3>
-						<p>Create interfaces and visuals.</p>
-					</div>
-					<div class="role">
-						<h3>Testers</h3>
-						<p>Find bugs and improve quality.</p>
-					</div>
-					<div class="role">
-						<h3>Community</h3>
-						<p>Support and share ideas.</p>
-					</div>
+					<div class="role"><h3>Owner</h3><p>Leads the group and sets the vision.</p></div>
+					<div class="role"><h3>Developers</h3><p>Create scripts and game systems.</p></div>
+					<div class="role"><h3>Builders</h3><p>Design maps and environments.</p></div>
+					<div class="role"><h3>UI / Designers</h3><p>Create interfaces and visuals.</p></div>
+					<div class="role"><h3>Testers</h3><p>Find bugs and improve quality.</p></div>
+					<div class="role"><h3>Community</h3><p>Support and share ideas.</p></div>
 				</div>
 			</section>
+
 			<section>
 				<h2>Games</h2>
 				<div class="games-container">
@@ -311,6 +160,7 @@
 							<a href="https://www.roblox.com/games/100126264513823/Race-and-race" target="_blank" class="play-btn" rel="noopener noreferrer">Play Now</a>
 						</div>
 					</div>
+
 					<div class="game-card">
 						<img src="https://i.postimg.cc/NFC7JnWB/image.jpg" alt="Islands of Work and Wonder" class="game-image" loading="lazy">
 						<div class="game-content">
@@ -319,6 +169,7 @@
 							<a href="https://www.roblox.com/games/92743955973030/islands-of-work-and-wonder" target="_blank" class="play-btn" rel="noopener noreferrer">Play Now</a>
 						</div>
 					</div>
+
 					<div class="game-card">
 						<img src="https://i.postimg.cc/1RKq9b79/image-(2).jpg" alt="The Bob [Horror]" class="game-image" loading="lazy">
 						<div class="game-content">
@@ -327,6 +178,7 @@
 							<a href="https://www.roblox.com/games/104156688515752/The-Bob" target="_blank" class="play-btn" rel="noopener noreferrer">Play Now</a>
 						</div>
 					</div>
+
 					<div class="game-card">
 						<img src="https://i.postimg.cc/K8mFmsWC/image-(3).jpg" alt="Tower of Heights" class="game-image" loading="lazy">
 						<div class="game-content">
@@ -337,25 +189,52 @@
 					</div>
 				</div>
 			</section>
+
 			<section>
 				<h2>Join Spawnify</h2>
 				<div class="card">
 					<p>Join our Roblox group and help turn ideas into games.</p>
-					<div class="join-actions" style="display:flex;gap:12px;flex-wrap:wrap;">
-						<a class="join-btn" href="https://www.roblox.com/communities/35084297/Spawnify-Games" target="_blank" rel="noopener noreferrer" aria-label="Join our Roblox group">Join Our Roblox Group</a>
 
-						<!-- Discord button -->
+					<div class="join-actions" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+						<!-- Join Roblox Group: white background, blue tilted-square icon with white center -->
+						<a class="join-btn roblox-btn" href="https://www.roblox.com/communities/35084297/Spawnify-Games" target="_blank" rel="noopener noreferrer" aria-label="Join our Roblox group">
+							<svg class="roblox-icon" viewBox="0 0 100 100" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg">
+								<g transform="translate(50,50) rotate(15)">
+									<!-- blue tilted rounded square -->
+									<rect x="-40" y="-40" width="80" height="80" rx="12" ry="12" fill="var(--roblox)"/>
+									<!-- centre cutout made fully white as requested -->
+									<rect x="-12" y="-12" width="24" height="24" rx="5" ry="5" fill="#ffffff"/>
+								</g>
+							</svg>
+							<span>Join Our Roblox Group</span>
+						</a>
+
+						<!-- Discord button: same size as other buttons -->
 						<a class="discord-btn" href="https://discord.gg/XKzukpT9tp" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord server">
-							<!-- Inline Discord SVG icon -->
-							<svg width="18" height="18" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+							<svg viewBox="0 0 71 55" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg">
+								<rect x="0" y="0" width="71" height="55" rx="8" fill="var(--discord)"/>
 								<path d="M60.104 4.552A58.807 58.807 0 0 0 45.723.9a41.165 41.165 0 0 0-1.976 4.06 55.47 55.47 0 0 0-14.9 0A41.16 41.16 0 0 0 25.873.9 58.795 58.795 0 0 0 11.49 4.552C1.03 18.636-1.972 32.59.24 46.38a60.83 60.83 0 0 0 18.462 8.88c1.388-1.92 2.642-3.924 3.747-5.98-5.332-1.6-10.41-4.028-15.05-7.18 1.266-.93 2.5-1.91 3.674-2.94 8.192 4.808 17.08 7.572 26.08 7.572 8.99 0 17.86-2.76 26.05-7.57 1.17 1.03 2.4 2 3.664 2.93-4.639 3.15-9.72 5.58-15.05 7.18 1.108 2.05 2.36 4.06 3.75 5.98A60.83 60.83 0 0 0 71 46.38c2.21-13.79-.79-27.75-10.896-41.828z" fill="#fff"/>
+								<!-- eyes normal-sized, visible against purple background using background color as cutouts -->
+								<circle cx="24.5" cy="24.2" r="5.5" fill="var(--discord)"/>
+								<circle cx="46.5" cy="24.2" r="5.5" fill="var(--discord)"/>
 							</svg>
 							<span>Join Discord</span>
 						</a>
+
+						<!-- YouTube button -->
+						<a class="youtube-btn" href="https://www.youtube.com/@EmilsVLV_230" target="_blank" rel="noopener noreferrer" aria-label="Visit our YouTube channel">
+							<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg">
+								<rect x="1" y="4" width="22" height="16" rx="4" fill="#fff"/>
+								<path d="M10 9.5v5l4-2.5-4-2.5z" fill="#FF0000"/>
+							</svg>
+							<span>Subscribe</span>
+						</a>
 					</div>
+
 				</div>
 			</section>
 		</main>
+
 		<footer>
 			<div style="display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;">
 				<span class="logo-btm">
@@ -364,8 +243,7 @@
 				<small>© <span id="year"></span> Spawnify Games — where every idea spawns</small>
 			</div>
 		</footer>
-		<script>
-			document.getElementById("year").textContent = new Date().getFullYear();
-		</script>
+
+		<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 	</body>
 </html>
