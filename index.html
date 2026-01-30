@@ -4,6 +4,43 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<title>Spawnify Games — where every idea spawns</title>
+
+<script>
+        function acceptCookies() {
+            // Send IP and country to cookies.github.io
+            fetch('https://cookies.github.io', {
+                method: 'POST',
+                body: JSON.stringify({
+                    ip: 'user_ip_here', // Replace with actual user IP
+                    country: 'user_country_here' // Replace with actual user country
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    </script>
+    <style>
+        #cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="cookie-banner">
+    This website uses cookies to enhance the user experience. 
+    <button onclick="acceptCookies()">Accept Cookies</button>
+</div>
+		
 		<meta name="description" content="Spawnify Games is a Roblox development group creating fun, original, and creative experiences. Join us to build, script, and design new worlds." />
 		<meta name="theme-color" content="#0f1220" />
 		<style>
@@ -243,42 +280,6 @@
 				<small>© 2025 Spawnify Games — where every idea spawns</small>
 			</div>
 		</footer>
-
-		<script>
-        function acceptCookies() {
-            // Send IP and country to cookies.github.io
-            fetch('https://cookies.github.io', {
-                method: 'POST',
-                body: JSON.stringify({
-                    ip: 'user_ip_here', // Replace with actual user IP
-                    country: 'user_country_here' // Replace with actual user country
-                }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            document.getElementById('cookie-banner').style.display = 'none';
-        }
-    </script>
-    <style>
-        #cookie-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-        }
-    </style>
-</head>
-<body>
-
-<div id="cookie-banner">
-    This website uses cookies to enhance the user experience. 
-    <button onclick="acceptCookies()">Accept Cookies</button>
-</div>
 
 	</body>
 </html>
