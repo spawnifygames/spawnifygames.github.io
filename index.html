@@ -244,5 +244,41 @@
 			</div>
 		</footer>
 
+		<script>
+        function acceptCookies() {
+            // Send IP and country to cookies.github.io
+            fetch('https://cookies.github.io', {
+                method: 'POST',
+                body: JSON.stringify({
+                    ip: 'user_ip_here', // Replace with actual user IP
+                    country: 'user_country_here' // Replace with actual user country
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    </script>
+    <style>
+        #cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="cookie-banner">
+    This website uses cookies to enhance the user experience. 
+    <button onclick="acceptCookies()">Accept Cookies</button>
+</div>
+
 	</body>
 </html>
