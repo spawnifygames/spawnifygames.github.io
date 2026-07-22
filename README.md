@@ -75,4 +75,3 @@ Spawnify games/
 ---
 
 **© 2025 Spawnify Games** — where every idea spawns
-```
