@@ -47,7 +47,7 @@ This is a fork of the [official Spawnify Games website](https://github.com/spawn
 ## Project Structure
 
 ```
-badFork/
+Spawnify games/
 ├── index.html              Main website file (single-page HTML + CSS)
 ├── CNAME                   Custom domain configuration (spawnifygames.win)
 ├── race.png                Game thumbnail: Race and Race
