@@ -38,8 +38,8 @@ This is a fork of the [official Spawnify Games website](https://github.com/spawn
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yalters/badFork.git
-   cd badFork
+   git clone https://github.com/spawnifygames
+   cd spawnifygames
    ```
 
 2. Open `index.html` in your web browser to preview the site locally.
@@ -76,10 +76,3 @@ badFork/
 
 **© 2025 Spawnify Games** — where every idea spawns
 ```
-
-**To add this to your repository**, you can:
-
-1. **Via GitHub Web UI**: Click "Add file" → "Create new file" → paste the content above → name it `README.md` → commit
-2. **Via Git CLI**: Create a local `README.md` file with the content, then `git add`, `commit`, and `push`
-
-Since this is your fork, you should have permission through the GitHub web interface even if the API access is restricted.
