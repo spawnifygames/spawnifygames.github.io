@@ -38,7 +38,7 @@ This is a fork of the [official Spawnify Games website](https://github.com/spawn
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/spawnifygames
+   git clone https://github.com/spawnifygames.github.io
    cd spawnifygames
    ```
 
