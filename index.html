@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Spawnify Games — where every idea spawns</title>
+    <title>Spawnify Games</title>
 
     <link
       rel="icon"
@@ -19,6 +19,7 @@
       media="(prefers-color-scheme: dark)"
     />
 
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -31,6 +32,14 @@
     <meta
       property="og:description"
       content="Spawnify Games — where every idea spawns"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
     />
 
     <style>
@@ -59,12 +68,12 @@
           "Helvetica Neue",
           Arial,
           sans-serif;
-
         display: flex;
         flex-direction: column;
         background: #f5f5f5;
       }
 
+      /* Main Page Content */
       .content {
         flex: 1;
         background: white;
@@ -77,9 +86,11 @@
 
       .content h1 {
         font-size: 42px;
-        color: #111;
+        color: #111111;
+        font-weight: 700;
       }
 
+      /* Bottom Footer Bar */
       .footer-bar {
         background: #ffffff;
         padding: 16px 20px;
@@ -91,6 +102,7 @@
         flex-wrap: wrap;
       }
 
+      /* Footer Buttons */
       .btn {
         display: inline-flex;
         align-items: center;
@@ -115,10 +127,12 @@
   </head>
 
   <body>
+    <!-- Center Content -->
     <div class="content">
       <h1>Spawnify Games</h1>
     </div>
 
+    <!-- Bottom Action Buttons -->
     <footer class="footer-bar">
       <a
         class="btn"
