@@ -250,7 +250,14 @@ iframe {
       </symbol>
     </svg>
 
-
+    <div class="floating-banner" id="floating-banner">
+      <a
+        href="https://arena.ai/code"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="banner-link-wrapper banner-padding"
+        onclick="onCodePreviewBannerCTAClicked(event)"
+      >
         <div class="banner-logo"><svg
   width="167"
   height="124"
@@ -276,7 +283,10 @@ iframe {
   />
 </svg>
 </div>
-
+        <div class="banner-text-container">
+          <p class="banner-text banner-upper-text">Built with Arena</p>
+          <p class="banner-text banner-lower-text">Content is user-generated and unverified</p>
+        </div>
       </a>
       <div class="banner-action-container banner-padding">
         <button
@@ -296,7 +306,7 @@ iframe {
     <div class="iframe-container">
       <iframe
         id="preview-iframe"
-
+        src="https://01a00f51-1cda-7f42-8fe3-a04b18aef650.arena.site/?embed=true"
         sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-popups allow-popups-to-escape-sandbox allow-downloads allow-top-navigation-by-user-activation"
         allow="
           accelerometer;
