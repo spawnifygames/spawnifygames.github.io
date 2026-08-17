@@ -19,7 +19,6 @@
       media="(prefers-color-scheme: dark)"
     />
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -31,100 +30,8 @@
     />
     <meta
       property="og:description"
-      content="Check out what I built in Arena's Code Arena - Content is user-generated and unverified"
-    />
-    <meta
-      property="og:image"
-      content="https://screenshot-taker-prod.weichiang.workers.dev/message/01a00f51-1cda-7f42-8fe3-a04b18aef650/og-image.png"
-    />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta
-      property="twitter:url"
-      content="https://01a00f51-1cda-7f42-8fe3-a04b18aef650.arena.site/"
-    />
-    <meta
-      property="twitter:title"
       content="Spawnify Games — where every idea spawns"
     />
-    <meta
-      property="twitter:description"
-      content="Check out what I built in Arena's Code Arena - Content is user-generated and unverified"
-    />
-    <meta
-      property="twitter:image"
-      content="https://screenshot-taker-prod.weichiang.workers.dev/message/01a00f51-1cda-7f42-8fe3-a04b18aef650/og-image.png"
-    />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <script>
-      const REPORT_SURVEY_ID = "019a46ef-f7dd-0000-58be-14fbb8b91d15";
-      const MESSAGE_ID = "01a00f51-1cda-7f42-8fe3-a04b18aef650";
-      const EVALUATION_SESSION_ID = "01a00f2e-697c-7500-a59e-c116200a1d93";
-
-      const getStorageKey = (prefix) => `${prefix}_${MESSAGE_ID}`;
-      const hasStorageKey = (prefix) =>
-        !!localStorage.getItem(getStorageKey(prefix));
-
-      // PostHog
-      !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(t){return"posthog.people (stub)"},o="capture identify alias people.set people.set_once people.unset people.increment people.append people.remove people.group people.delete_user people.toString people.set_property people.set_person_properties people.set_group_properties reset get_distinct_id getGroups get_session_id get_session_replay_url".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1}(document,window.posthog||[]);
-
-      const POSTHOG_API_KEY =
-        "phc_LG7IJbVJqBsk584rbcKca0D5lV2vHguiijDrVji7yDM";
-
-      if (POSTHOG_API_KEY) {
-        posthog.init(POSTHOG_API_KEY, {
-          api_host: "/ph",
-          ui_host: "https://us.posthog.com",
-          person_profiles: "identified_only",
-          autocapture: false,
-          disable_session_recording: true,
-
-          before_send: (event) => {
-            if (event.event === "survey sent") {
-              if (!hasStorageKey("code_reported")) {
-                localStorage.setItem(
-                  getStorageKey("code_reported"),
-                  "true"
-                );
-
-                posthog.capture?.("code_preview_banner_report");
-              }
-
-              if (event.properties?.$survey_completed === true) {
-                localStorage.setItem(
-                  getStorageKey("survey_completed"),
-                  "true"
-                );
-
-                const button =
-                  document.querySelector(".report-content-btn");
-
-                if (button) {
-                  button.style.display = "none";
-                }
-              }
-            }
-
-            return event;
-          },
-        });
-
-        posthog.register({
-          message_id: MESSAGE_ID,
-          evaluation_session_id: EVALUATION_SESSION_ID,
-        });
-      }
-    </script>
 
     <style>
       * {
@@ -140,7 +47,6 @@
       html,
       body {
         height: 100%;
-        overflow: hidden;
       }
 
       body {
@@ -159,110 +65,58 @@
         background: #f5f5f5;
       }
 
-      /* Top bar */
       .top-bar {
         background: #fff;
         padding: 10px 16px;
         box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
-
         display: flex;
         gap: 12px;
         align-items: center;
-
         z-index: 10;
       }
 
-      /* Top bar links */
       .top-bar a {
         color: #111;
         font-weight: 600;
         font-size: 14px;
-
-        padding: 8px 14px;
-        border-radius: 8px;
-
-        transition:
-          background 0.2s ease,
-          transform 0.2s ease;
       }
 
-      .top-bar a:hover {
-        background: #f0f0f0;
-        transform: translateY(-1px);
+      .top-bar a.small {
+        font-weight: 500;
+        color: #555;
       }
 
-      /* Iframe container */
-      .iframe-container {
+      .content {
         flex: 1;
-        position: relative;
-
         background: white;
-        overflow: hidden;
-        min-height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
       }
 
-      iframe {
-        position: absolute;
-
-        top: 0;
-        left: 0;
-
-        width: 100%;
-        height: 100%;
-
-        border: none;
-        display: block;
+      .content h1 {
+        font-size: 42px;
+        color: #111;
       }
     </style>
   </head>
 
-  <body data-ryu-obtrusive-scrollbars="false">
-
-    <!-- Hidden icons -->
-    <svg style="display: none">
-      <symbol
-        id="icon-flag"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path
-          d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"
-        />
-      </symbol>
-
-      <symbol
-        id="icon-close"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path d="M18 6 6 18" />
-        <path d="m6 6 12 12" />
-      </symbol>
-    </svg>
-
-    <!-- Social links -->
+  <body>
     <div class="top-bar">
-
       <a
+        class="small"
         href="https://www.roblox.com/communities/35084297/Spawnify-Games#!/about"
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener"
       >
-        Roblox
+        Roblox Community
       </a>
 
       <a
         href="https://discord.gg/XKzukpT9tp"
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener"
       >
         Discord
       </a>
@@ -270,88 +124,14 @@
       <a
         href="https://www.youtube.com/@SpawnifyGames"
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener"
       >
         YouTube
       </a>
-
     </div>
 
-    <!-- Website -->
-    <div class="iframe-container">
-
-      <iframe
-        id="preview-iframe"
-        src="https://01a00f51-1cda-7f42-8fe3-a04b18aef650.arena.site/?embed=true"
-        sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-popups allow-popups-to-escape-sandbox allow-downloads"
-        allow="
-          accelerometer;
-          autoplay;
-          camera;
-          encrypted-media;
-          fullscreen;
-          geolocation;
-          gyroscope;
-          microphone;
-          midi;
-          clipboard-read;
-          clipboard-write;
-          usb;
-          vr;
-          xr-spatial-tracking;
-          screen-wake-lock;
-          magnetometer;
-          ambient-light-sensor;
-          battery;
-          gamepad;
-          picture-in-picture;
-          display-capture;
-          bluetooth;
-        "
-        referrerpolicy="origin-when-cross-origin"
-      ></iframe>
-
+    <div class="content">
+      <h1>Spawnify Games</h1>
     </div>
-
-    <script>
-      const iframe = document.getElementById("preview-iframe");
-
-      iframe.addEventListener("load", () => {
-        iframe.focus();
-      });
-
-      function onCodePreviewBannerCTAClicked(event) {
-        posthog?.capture?.(
-          "code_preview_banner_cta_clicked"
-        );
-      }
-
-      function reportContent(event) {
-        event.preventDefault();
-        event.stopPropagation();
-
-        if (
-          !posthog ||
-          !posthog.capture ||
-          !posthog.setPersonProperties ||
-          !posthog.displaySurvey
-        ) {
-          return;
-        }
-
-        if (!hasStorageKey("survey_completed")) {
-          posthog.setPersonProperties?.({
-            last_reported_message_id: MESSAGE_ID,
-            last_report_timestamp: Date.now(),
-          });
-
-          posthog.displaySurvey?.(REPORT_SURVEY_ID, {
-            ignoreConditions: true,
-            ignoreDelay: true,
-          });
-        }
-      }
-    </script>
-
   </body>
 </html>
