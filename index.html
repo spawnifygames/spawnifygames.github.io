@@ -94,7 +94,7 @@ body {
   background: #f5f5f5;
 }
 
-/* Banner styles */
+
 
 
 @keyframes slideIn {
@@ -213,9 +213,7 @@ iframe {
 
           <svg class="report-icon" width="20" height="20"><use href="#icon-flag" /></svg>
         </button>
-        <button class="action-btn" onclick="dismissBanner(event)" aria-label="Close banner">
-          <svg width="20" height="20"><use href="#icon-close" /></svg>
-        </button>
+
       </div>
     </div>
 
@@ -262,8 +260,6 @@ iframe {
         }
       });
 
-      function onCodePreviewBannerCTAClicked(event) {
-        posthog?.capture?.("code_preview_banner_cta_clicked");
       }
 
       function reportContent(event) {
@@ -283,10 +279,7 @@ iframe {
         }
       }
 
-      function dismissBanner(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        posthog?.capture?.("code_preview_banner_dismiss");
+
 
 
       }
