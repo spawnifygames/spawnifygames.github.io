@@ -117,58 +117,9 @@ body {
   }
 }
 
-.banner-padding {
-  padding: 10px 16px;
-}
 
-.banner-link-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  cursor: pointer;
-}
 
-.banner-logo {
-  display: flex;
-  align-items: center;
-  color: #2d2d2d;
-  flex-shrink: 0;
-}
 
-.banner-logo svg {
-  height: 28px;
-  width: auto;
-}
-
-.banner-text-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.banner-text {
-  margin: 0;
-  white-space: nowrap;
-}
-
-.banner-upper-text {
-  color: #151617;
-  font-size: 14px;
-}
-
-.banner-lower-text {
-  color: #878c9f;
-  font-size: 10px;
-}
-
-.banner-action-container {
-  border-left: 1px solid rgba(45, 47, 53, 0.08);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  align-self: stretch;
-}
 
 .action-btn {
   display: flex;
@@ -238,13 +189,7 @@ iframe {
 
 
 
-        <div class="banner-logo"><svg
-  width="167"
-  height="124"
-  viewBox="0 0 167 124"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
->
+
   <path
     d="M57.5364 53.3142C52.1508 53.3142 47.7887 57.6763 47.7887 63.0618V123.88H53.9963V63.0618C53.9963 61.0989 55.5902 59.505 57.5531 59.505C59.5161 59.505 61.11 61.0989 61.11 63.0618V123.88H67.3176V63.0618C67.3176 57.6763 62.9555 53.3142 57.5699 53.3142H57.5364Z"
     fill="currentColor"
@@ -263,17 +208,9 @@ iframe {
   />
 </svg>
 </div>
-        <div class="banner-text-container">
 
-        </div>
       </a>
-      <div class="banner-action-container banner-padding">
-        <button
-          class="action-btn report-content-btn"
-          style="display: none"
-          onclick="reportContent(event)"
-          aria-label="Report content"
-        >
+
           <svg class="report-icon" width="20" height="20"><use href="#icon-flag" /></svg>
         </button>
         <button class="action-btn" onclick="dismissBanner(event)" aria-label="Close banner">
