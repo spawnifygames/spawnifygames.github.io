@@ -108,9 +108,7 @@ body {
   }
 }
 
-.floating-banner.dismissed {
-  animation: slideOut 0.3s ease-out forwards;
-}
+
 
 @keyframes slideOut {
   to {
@@ -359,9 +357,7 @@ iframe {
         event.stopPropagation();
         posthog?.capture?.("code_preview_banner_dismiss");
 
-        const banner = document.getElementById("floating-banner");
-        banner.classList.add("dismissed");
-        setTimeout(() => banner.remove(), 300);
+
       }
     </script>
   </body>
