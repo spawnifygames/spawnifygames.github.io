@@ -1,173 +1,857 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spawnify Games</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #0b0f19;
-            --text: #ffffff;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --hover-bg: rgba(255, 255, 255, 0.1);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spawnify Games — where every idea spawns</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #080a11;
+      --card-bg: rgba(22, 27, 46, 0.6);
+      --card-border: rgba(255, 255, 255, 0.07);
+      --primary-purple: #5850ec;
+      --primary-hover: #4840d6;
+      --text-main: #ffffff;
+      --text-muted: #94a3b8;
+      --accent-purple: #8b5cf6;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-            background: radial-gradient(circle at top, #1e293b 0%, #0b0f19 80%);
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        /* Main Hero Section */
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 50% -10%, #201a47 0%, transparent 60%),
+        radial-gradient(circle at 50% 100%, #17102e 0%, transparent 50%);
+      min-height: 100vh;
+    }
 
-        h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeInDown 1s ease-out;
-            letter-spacing: -1px;
-        }
+    /* Navbar */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(8, 10, 17, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
 
-        p.subtitle {
-            font-size: 1.5rem;
-            color: #94a3b8;
-            margin-bottom: 3rem;
-            animation: fadeInUp 1s ease-out;
-            font-weight: 400;
-        }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+    }
 
-        /* Bottom Buttons */
-        .social-container {
-            padding: 3rem 2rem;
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeIn 1.5s ease-out;
-            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-        }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: white;
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
 
-        .social-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 2rem;
-            background: var(--card-bg);
-            color: var(--text);
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
+    .brand-logo span {
+      color: #a5b4fc;
+      font-weight: 400;
+    }
 
-        .social-btn:hover {
-            background: var(--hover-bg);
-            transform: translateY(-4px);
-        }
+    .star-icon {
+      width: 28px;
+      height: 28px;
+    }
 
-        /* Custom Hover Colors */
-        .social-btn.roblox:hover { 
-            border-color: #ffffff; 
-            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15); 
-        }
-        .social-btn.discord:hover { 
-            border-color: #5865F2; 
-            box-shadow: 0 8px 20px rgba(88, 101, 242, 0.25); 
-        }
-        .social-btn.youtube:hover { 
-            border-color: #FF0000; 
-            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.25); 
-        }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
 
-        .social-btn svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
 
-        /* Animations */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    nav a:hover {
+      color: white;
+    }
 
-        /* Mobile responsiveness */
-        @media (max-width: 600px) {
-            h1 { font-size: 2.8rem; }
-            p.subtitle { font-size: 1.2rem; }
-            .social-btn { width: 100%; justify-content: center; }
-        }
-    </style>
+    .btn-join-us {
+      background: var(--primary-purple);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    .btn-join-us:hover {
+      background: var(--primary-hover);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 1.5rem 4rem 1.5rem;
+      position: relative;
+    }
+
+    .logo-badge-box {
+      width: 80px;
+      height: 80px;
+      background: #000;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 50px rgba(88, 80, 236, 0.35);
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      margin-bottom: 2rem;
+    }
+
+    .dot-green {
+      width: 6px;
+      height: 6px;
+      background: #22c55e;
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-size: 5rem;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title .gradient-text {
+      background: linear-gradient(180deg, #ffffff 30%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: block;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-subtitle span {
+      color: #818cf8;
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 4rem;
+    }
+
+    .btn-primary {
+      background: var(--primary-purple);
+      color: white;
+      padding: 0.85rem 1.8rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: white;
+      padding: 0.85rem 1.8rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .scroll-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+
+    .mouse-icon {
+      width: 16px;
+      height: 24px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .mouse-icon::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 2px;
+    }
+
+    /* Container for layout sections */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Stats Banner */
+    .stats-section {
+      padding: 4rem 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .stat-item .number {
+      font-size: 3.5rem;
+      font-weight: 900;
+    }
+
+    .stat-item .plus {
+      color: #818cf8;
+    }
+
+    .stat-item .highlight {
+      color: #a5b4fc;
+    }
+
+    .stat-item .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 1.5px;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 1.1em;
+      background: #818cf8;
+      border-radius: 4px;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    /* Card Styling */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      backdrop-filter: blur(10px);
+    }
+
+    /* About Section */
+    .about-card p {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
+
+    .about-card strong {
+      color: white;
+    }
+
+    .about-card .accent {
+      color: #818cf8;
+    }
+
+    /* Grid Layouts */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .card-icon-wrapper {
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* Role Cards */
+    .role-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .role-icon {
+      width: 42px;
+      height: 42px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .role-info h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .role-info p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Games Grid */
+    .game-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .game-thumb {
+      width: 100%;
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .game-tag {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .tag-racing { background: #ea580c; }
+    .tag-adventure { background: #0d9488; }
+    .tag-horror { background: #16a34a; }
+    .tag-horror-yellow { background: #ca8a04; }
+    .tag-obby { background: #9333ea; }
+
+    .game-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .game-content h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .game-content p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .btn-play {
+      background: var(--primary-purple);
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-play:hover {
+      background: var(--primary-hover);
+    }
+
+    /* Join Section */
+    .join-card {
+      margin-top: 1rem;
+      margin-bottom: 6rem;
+    }
+
+    .join-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .join-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-social {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.8rem 1.4rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .btn-social:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .btn-roblox {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    .btn-discord {
+      background: #5865F2;
+      color: #ffffff;
+    }
+
+    .btn-youtube {
+      background: #FF0000;
+      color: #ffffff;
+    }
+
+    .btn-social svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 900px) {
+      .grid-3, .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 3.5rem;
+      }
+      .stats-section {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <main>
-        <h1>Spawnify Games</h1>
-        <p class="subtitle">where every idea spawns</p>
-    </main>
-
-    <!-- Social Links at the bottom -->
-    <div class="social-container">
-        
-        <!-- Roblox -->
-        <a href="https://www.roblox.com/communities/35084297/Spawnify-Games#!/about" target="_blank" rel="noopener noreferrer" class="social-btn roblox">
-            <svg viewBox="0 0 24 24">
-                <path d="M5.42 2.372 21.628 5.42l-3.048 16.208L2.372 18.58 5.42 2.372ZM14.93 9.47l-5.6 1.055L8.275 16.12l5.6-1.055 1.055-5.595Z"/>
-            </svg>
-            Roblox
-        </a>
-        
-        <!-- Discord -->
-        <a href="https://discord.gg/XKzukpT9tp" target="_blank" rel="noopener noreferrer" class="social-btn discord">
-            <svg viewBox="0 0 24 24">
-                <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/>
-            </svg>
-            Discord
-        </a>
-
-        <!-- YouTube -->
-        <a href="https://www.youtube.com/@SpawnifyGames" target="_blank" rel="noopener noreferrer" class="social-btn youtube">
-            <svg viewBox="0 0 24 24">
-                <path d="M21.582 6.186a2.636 2.636 0 0 0-1.85-1.86C18.106 3.9 12 3.9 12 3.9s-6.106 0-7.732.426a2.636 2.636 0 0 0-1.85 1.86C2 7.822 2 12 2 12s0 4.178.418 5.814a2.636 2.636 0 0 0 1.85 1.86C5.894 20.1 12 20.1 12 20.1s6.106 0 7.732-.426a2.636 2.636 0 0 0 1.85-1.86C22 16.178 22 12 22 12s0-4.178-.418-5.814zM9.99 15.463V8.537l6.505 3.463-6.505 3.463z"/>
-            </svg>
-            YouTube
-        </a>
-
+  <!-- Header / Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand-logo">
+        <svg class="star-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="18" stroke="white" stroke-width="6"/>
+          <path d="M50 10 C50 30 30 50 10 50 C30 50 50 70 50 90 C50 70 70 50 90 50 C70 50 50 30 50 10 Z" stroke="white" stroke-width="5" stroke-linejoin="round"/>
+        </svg>
+        Spawnify <span>Games</span>
+      </a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#what-we-do">What We Do</a>
+        <a href="#roles">Roles</a>
+        <a href="#games">Games</a>
+        <a href="#join">Join</a>
+        <a href="#join" class="btn-join-us">Join Us →</a>
+      </nav>
     </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="logo-badge-box">
+      <svg class="star-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 45px; height: 45px;">
+        <circle cx="50" cy="50" r="18" stroke="white" stroke-width="6"/>
+        <path d="M50 10 C50 30 30 50 10 50 C30 50 50 70 50 90 C50 70 70 50 90 50 C70 50 50 30 50 10 Z" stroke="white" stroke-width="5" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <div class="pill-badge">
+      <span class="dot-green"></span>
+      Roblox Development Group · Since 2025
+    </div>
+
+    <h1 class="hero-title">
+      Spawnify
+      <span class="gradient-text">Games</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      where every idea <span>spawns</span>
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#games" class="btn-primary">▶ Explore Games</a>
+      <a href="https://www.roblox.com/communities/35084297/Spawnify-Games#!/about" target="_blank" class="btn-secondary">Join the Group</a>
+    </div>
+
+    <div class="scroll-indicator">
+      SCROLL
+      <div class="mouse-icon"></div>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- Stats Banner -->
+    <section class="stats-section">
+      <div class="stat-item">
+        <div class="number">5<span class="plus">+</span></div>
+        <div class="label">GAMES</div>
+      </div>
+      <div class="stat-item">
+        <div class="number">100<span class="plus">+</span></div>
+        <div class="label">IDEAS SPAWNED</div>
+      </div>
+      <div class="stat-item">
+        <div class="number">Since <span class="highlight">2025</span></div>
+        <div class="label">CREATING ON ROBLOX</div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2 class="section-title">About Us</h2>
+      <div class="card about-card">
+        <p>
+          <strong>Spawnify Games</strong> is a Roblox development group dedicated to creating fun, original, and creative experiences. We turn ideas into playable worlds and encourage <span class="accent">innovation</span>, <span class="accent">teamwork</span>, and <span class="accent">learning</span>.
+        </p>
+      </div>
+    </section>
+
+    <!-- What We Do -->
+    <section id="what-we-do">
+      <h2 class="section-title">What We Do</h2>
+      <div class="grid-3">
+        <div class="feature-card">
+          <div class="card-icon-wrapper">🎮</div>
+          <h3>Develop Original Games</h3>
+          <p>Build unique Roblox experiences from scratch — mechanics, worlds, and stories that are entirely our own.</p>
+        </div>
+        <div class="feature-card">
+          <div class="card-icon-wrapper">🧠</div>
+          <h3>Experiment with Ideas</h3>
+          <p>We push boundaries and explore concepts that challenge what Roblox games can be.</p>
+        </div>
+        <div class="feature-card">
+          <div class="card-icon-wrapper">🚀</div>
+          <h3>Grow Real Skills</h3>
+          <p>Every project sharpens scripting, building, and design abilities through hands-on creation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Roles -->
+    <section id="roles">
+      <h2 class="section-title">Team Roles</h2>
+      <p class="section-subtitle">Everyone has a place in Spawnify Games.</p>
+
+      <div class="grid-3" style="margin-bottom: 1.5rem;">
+        <div class="role-card">
+          <div class="role-icon">👑</div>
+          <div class="role-info">
+            <h4>Owner</h4>
+            <p>Leads the group and sets the vision.</p>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">💻</div>
+          <div class="role-info">
+            <h4>Developers</h4>
+            <p>Create scripts and game systems.</p>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">🏗️</div>
+          <div class="role-info">
+            <h4>Builders</h4>
+            <p>Design maps and environments.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="role-card">
+          <div class="role-icon">🎨</div>
+          <div class="role-info">
+            <h4>UI / Designers</h4>
+            <p>Create interfaces and visuals.</p>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">🔍</div>
+          <div class="role-info">
+            <h4>Testers</h4>
+            <p>Find bugs and improve quality.</p>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">🌐</div>
+          <div class="role-info">
+            <h4>Community</h4>
+            <p>Support and share ideas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games">
+      <h2 class="section-title">Games</h2>
+      <p class="section-subtitle">5 experiences and growing.</p>
+
+      <!-- Row 1 (3 games) -->
+      <div class="grid-3" style="margin-bottom: 1.5rem;">
+        <!-- Game 1 -->
+        <div class="game-card">
+          <div class="game-thumb" style="background-image: linear-gradient(180deg, transparent 40%, rgba(8,10,17,0.9)), url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=600&q=80');">
+            <span class="game-tag tag-racing">Racing</span>
+          </div>
+          <div class="game-content">
+            <h3>Race and Race</h3>
+            <p>Drive fast and beat the clock in this exciting Roblox racing game.</p>
+            <a href="https://www.roblox.com/communities/35084297/Spawnify-Games#!/about" target="_blank" class="btn-play">▶ Play Now</a>
+          </div>
+        </div>
+
+        <!-- Game 2 -->
+        <div class="game-card">
+          <div class="game-thumb" style="background-image: linear-gradient(180deg, transparent 40%, rgba(8,10,17,0.9)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80');">
+            <span class="game-tag tag-adventure">Adventure</span>
+          </div>
+          <div class="game-content">
+            <h3>Islands of Work and Wonder</h3>
+            <p>Work as hard as you can, sell your loot, and explore the islands.</p>
+            <a href="https://www.roblox.com/communities/35084297/Spawnify-Games#!/about" target="_blank" class="btn-play">▶ Play Now</a>
+          </div>
+        </div>
+
+        <!-- Game 3 -->
+        <div class="game-card">
+          <div class="game-thumb" style="background-image: linear-gradient(180deg, transparent 40%, rgba(8,10,17,0.9)), url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80');">
+            <span class="game-tag tag-horror">Horror</span>
+          </div>
+          <div class="game-content">
+            <h3>The Bob [Horror]</h3>
+            <p>Find the safe house and try to survive.</p>
+            <a href="https://www.roblox.com/communities/35084297/Spawnify-Games#!/about" target="_blank" class="btn-play">▶ Play Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2 (2 games) -->
+      <div class="grid-3">
+        <!-- Game 4 -->
+        <div class="game-card">
+          <div class="game-thumb" style="background-image: linear-gradient(180deg, transparent 40%, rgba(8,10,17,0.9)), url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80');">
+            <span class="game-tag tag-obby">Obby</span>
+          </div>
+          <div class="game-content">
+            <h3>Tower of Heights</h3>
+            <p>Get to the top of the tower and decide where you will go next.</p>
+            <a href="https://www.roblox.com/games/101953228803213/Tower-of-Heights" target="_blank" class="btn-play">▶ Play Now</a>
+          </div>
+        </div>
+
+        <!-- Game 5 -->
+        <div class="game-card">
+          <div class="game-thumb" style="background: #000; display: flex; align-items: center; justify-content: center;">
+            <span class="game-tag tag-horror-yellow">Horror</span>
+            <!-- Fredih Pixel Graphic -->
+            <svg width="100" height="100" viewBox="0 0 24 24" fill="white">
+              <path d="M6 2h12v2H6zM4 4h16v2H4zM4 6h2v2H4zM18 6h2v2h-2zM2 8h4v2H2zM18 8h4v2h-4zM2 10h2v4H2zM20 10h2v4h-2zM4 14h2v2H4zM18 14h2v2h-2zM6 16h12v2H6zM8 18h8v4H8z"/>
+            </svg>
+          </div>
+          <div class="game-content">
+            <h3>Five Nights at Fredih</h3>
+            <p>FNAF parody. Hide from Fredih and survive 5 nights — and if you dare, tackle the bonus shift.</p>
+            <a href="https://www.roblox.com/communities/35084297/Spawnify-Games#!/about" target="_blank" class="btn-play">▶ Play Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Join Section -->
+    <section id="join">
+      <h2 class="section-title">Join Spawnify</h2>
+      <div class="card join-card">
+        <h3>Join our Roblox group and help turn ideas into games.</h3>
+        <p>Whether you build, script, design, test, or just love playing — there's a place for you in Spawnify Games.</p>
+        
+        <div class="social-buttons">
+          <!-- Roblox -->
+          <a href="https://www.roblox.com/communities/35084297/Spawnify-Games#!/about" target="_blank" rel="noopener noreferrer" class="btn-social btn-roblox">
+            <svg viewBox="0 0 24 24">
+              <path d="M5.42 2.372 21.628 5.42l-3.048 16.208L2.372 18.58 5.42 2.372ZM14.93 9.47l-5.6 1.055L8.275 16.12l5.6-1.055 1.055-5.595Z"/>
+            </svg>
+            Join Our Roblox Group
+          </a>
+
+          <!-- Discord -->
+          <a href="https://discord.gg/XKzukpT9tp" target="_blank" rel="noopener noreferrer" class="btn-social btn-discord">
+            <svg viewBox="0 0 24 24">
+              <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/>
+            </svg>
+            Join Discord
+          </a>
+
+          <!-- YouTube -->
+          <a href="https://www.youtube.com/@SpawnifyGames" target="_blank" rel="noopener noreferrer" class="btn-social btn-youtube">
+            <svg viewBox="0 0 24 24">
+              <path d="M21.582 6.186a2.636 2.636 0 0 0-1.85-1.86C18.106 3.9 12 3.9 12 3.9s-6.106 0-7.732.426a2.636 2.636 0 0 0-1.85 1.86C2 7.822 2 12 2 12s0 4.178.418 5.814a2.636 2.636 0 0 0 1.85 1.86C5.894 20.1 12 20.1 12 20.1s6.106 0 7.732-.426a2.636 2.636 0 0 0 1.85-1.86C22 16.178 22 12 22 12s0-4.178-.418-5.814zM9.99 15.463V8.537l6.505 3.463-6.505 3.463z"/>
+            </svg>
+            Subscribe
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
 </body>
 </html>
