@@ -41,7 +41,20 @@
       min-height: 100vh;
     }
 
-    /* Navbar */
+    /* Scroll Animation Styles */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px) scale(0.92);
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Header */
     header {
       position: fixed;
       top: 0;
@@ -354,17 +367,17 @@
       gap: 1.5rem;
     }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
     .feature-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 16px;
       padding: 2rem;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px) scale(1.02) !important;
+      border-color: rgba(129, 140, 248, 0.4);
     }
 
     .card-icon-wrapper {
@@ -400,6 +413,11 @@
       display: flex;
       align-items: center;
       gap: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .role-card:hover {
+      transform: translateY(-4px) scale(1.02) !important;
     }
 
     .role-icon {
@@ -433,6 +451,12 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-6px) scale(1.02) !important;
+      border-color: rgba(129, 140, 248, 0.4);
     }
 
     .game-thumb {
@@ -564,9 +588,8 @@
       fill: currentColor;
     }
 
-    /* Responsive Adjustments */
     @media (max-width: 900px) {
-      .grid-3, .grid-2 {
+      .grid-3 {
         grid-template-columns: 1fr;
       }
       .hero-title {
@@ -603,7 +626,7 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero reveal">
     <div class="logo-badge-box">
       <svg class="star-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 45px; height: 45px;">
         <circle cx="50" cy="50" r="18" stroke="white" stroke-width="6"/>
@@ -639,7 +662,7 @@
   <div class="container">
 
     <!-- Stats Banner -->
-    <section class="stats-section">
+    <section class="stats-section reveal">
       <div class="stat-item">
         <div class="number">5<span class="plus">+</span></div>
         <div class="label">GAMES</div>
@@ -656,8 +679,8 @@
 
     <!-- About Section -->
     <section id="about">
-      <h2 class="section-title">About Us</h2>
-      <div class="card about-card">
+      <h2 class="section-title reveal">About Us</h2>
+      <div class="card about-card reveal">
         <p>
           <strong>Spawnify Games</strong> is a Roblox development group dedicated to creating fun, original, and creative experiences. We turn ideas into playable worlds and encourage <span class="accent">innovation</span>, <span class="accent">teamwork</span>, and <span class="accent">learning</span>.
         </p>
@@ -666,19 +689,19 @@
 
     <!-- What We Do -->
     <section id="what-we-do">
-      <h2 class="section-title">What We Do</h2>
+      <h2 class="section-title reveal">What We Do</h2>
       <div class="grid-3">
-        <div class="feature-card">
+        <div class="feature-card reveal">
           <div class="card-icon-wrapper">🎮</div>
           <h3>Develop Original Games</h3>
           <p>Build unique Roblox experiences from scratch — mechanics, worlds, and stories that are entirely our own.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card reveal">
           <div class="card-icon-wrapper">🧠</div>
           <h3>Experiment with Ideas</h3>
           <p>We push boundaries and explore concepts that challenge what Roblox games can be.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card reveal">
           <div class="card-icon-wrapper">🚀</div>
           <h3>Grow Real Skills</h3>
           <p>Every project sharpens scripting, building, and design abilities through hands-on creation.</p>
@@ -688,25 +711,25 @@
 
     <!-- Team Roles -->
     <section id="roles">
-      <h2 class="section-title">Team Roles</h2>
-      <p class="section-subtitle">Everyone has a place in Spawnify Games.</p>
+      <h2 class="section-title reveal">Team Roles</h2>
+      <p class="section-subtitle reveal">Everyone has a place in Spawnify Games.</p>
 
       <div class="grid-3" style="margin-bottom: 1.5rem;">
-        <div class="role-card">
+        <div class="role-card reveal">
           <div class="role-icon">👑</div>
           <div class="role-info">
             <h4>Owner</h4>
             <p>Leads the group and sets the vision.</p>
           </div>
         </div>
-        <div class="role-card">
+        <div class="role-card reveal">
           <div class="role-icon">💻</div>
           <div class="role-info">
             <h4>Developers</h4>
             <p>Create scripts and game systems.</p>
           </div>
         </div>
-        <div class="role-card">
+        <div class="role-card reveal">
           <div class="role-icon">🏗️</div>
           <div class="role-info">
             <h4>Builders</h4>
@@ -716,21 +739,21 @@
       </div>
 
       <div class="grid-3">
-        <div class="role-card">
+        <div class="role-card reveal">
           <div class="role-icon">🎨</div>
           <div class="role-info">
             <h4>UI / Designers</h4>
             <p>Create interfaces and visuals.</p>
           </div>
         </div>
-        <div class="role-card">
+        <div class="role-card reveal">
           <div class="role-icon">🔍</div>
           <div class="role-info">
             <h4>Testers</h4>
             <p>Find bugs and improve quality.</p>
           </div>
         </div>
-        <div class="role-card">
+        <div class="role-card reveal">
           <div class="role-icon">🌐</div>
           <div class="role-info">
             <h4>Community</h4>
@@ -742,13 +765,11 @@
 
     <!-- Games Section -->
     <section id="games">
-      <h2 class="section-title">Games</h2>
-      <p class="section-subtitle">5 experiences and growing.</p>
+      <h2 class="section-title reveal">Games</h2>
+      <p class="section-subtitle reveal">5 experiences and growing.</p>
 
-      <!-- Row 1 (3 games) -->
       <div class="grid-3" style="margin-bottom: 1.5rem;">
-        <!-- Game 1 -->
-        <div class="game-card">
+        <div class="game-card reveal">
           <div class="game-thumb" style="background-image: linear-gradient(180deg, transparent 40%, rgba(8,10,17,0.9)), url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=600&q=80');">
             <span class="game-tag tag-racing">Racing</span>
           </div>
@@ -759,8 +780,7 @@
           </div>
         </div>
 
-        <!-- Game 2 -->
-        <div class="game-card">
+        <div class="game-card reveal">
           <div class="game-thumb" style="background-image: linear-gradient(180deg, transparent 40%, rgba(8,10,17,0.9)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80');">
             <span class="game-tag tag-adventure">Adventure</span>
           </div>
@@ -771,8 +791,7 @@
           </div>
         </div>
 
-        <!-- Game 3 -->
-        <div class="game-card">
+        <div class="game-card reveal">
           <div class="game-thumb" style="background-image: linear-gradient(180deg, transparent 40%, rgba(8,10,17,0.9)), url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80');">
             <span class="game-tag tag-horror">Horror</span>
           </div>
@@ -784,10 +803,8 @@
         </div>
       </div>
 
-      <!-- Row 2 (2 games) -->
       <div class="grid-3">
-        <!-- Game 4 -->
-        <div class="game-card">
+        <div class="game-card reveal">
           <div class="game-thumb" style="background-image: linear-gradient(180deg, transparent 40%, rgba(8,10,17,0.9)), url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80');">
             <span class="game-tag tag-obby">Obby</span>
           </div>
@@ -798,11 +815,9 @@
           </div>
         </div>
 
-        <!-- Game 5 -->
-        <div class="game-card">
+        <div class="game-card reveal">
           <div class="game-thumb" style="background: #000; display: flex; align-items: center; justify-content: center;">
             <span class="game-tag tag-horror-yellow">Horror</span>
-            <!-- Fredih Pixel Graphic -->
             <svg width="100" height="100" viewBox="0 0 24 24" fill="white">
               <path d="M6 2h12v2H6zM4 4h16v2H4zM4 6h2v2H4zM18 6h2v2h-2zM2 8h4v2H2zM18 8h4v2h-4zM2 10h2v4H2zM20 10h2v4h-2zM4 14h2v2H4zM18 14h2v2h-2zM6 16h12v2H6zM8 18h8v4H8z"/>
             </svg>
@@ -818,13 +833,12 @@
 
     <!-- Join Section -->
     <section id="join">
-      <h2 class="section-title">Join Spawnify</h2>
-      <div class="card join-card">
+      <h2 class="section-title reveal">Join Spawnify</h2>
+      <div class="card join-card reveal">
         <h3>Join our Roblox group and help turn ideas into games.</h3>
         <p>Whether you build, script, design, test, or just love playing — there's a place for you in Spawnify Games.</p>
         
         <div class="social-buttons">
-          <!-- Roblox -->
           <a href="https://www.roblox.com/communities/35084297/Spawnify-Games#!/about" target="_blank" rel="noopener noreferrer" class="btn-social btn-roblox">
             <svg viewBox="0 0 24 24">
               <path d="M5.42 2.372 21.628 5.42l-3.048 16.208L2.372 18.58 5.42 2.372ZM14.93 9.47l-5.6 1.055L8.275 16.12l5.6-1.055 1.055-5.595Z"/>
@@ -832,7 +846,6 @@
             Join Our Roblox Group
           </a>
 
-          <!-- Discord -->
           <a href="https://discord.gg/XKzukpT9tp" target="_blank" rel="noopener noreferrer" class="btn-social btn-discord">
             <svg viewBox="0 0 24 24">
               <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/>
@@ -840,7 +853,6 @@
             Join Discord
           </a>
 
-          <!-- YouTube -->
           <a href="https://www.youtube.com/@SpawnifyGames" target="_blank" rel="noopener noreferrer" class="btn-social btn-youtube">
             <svg viewBox="0 0 24 24">
               <path d="M21.582 6.186a2.636 2.636 0 0 0-1.85-1.86C18.106 3.9 12 3.9 12 3.9s-6.106 0-7.732.426a2.636 2.636 0 0 0-1.85 1.86C2 7.822 2 12 2 12s0 4.178.418 5.814a2.636 2.636 0 0 0 1.85 1.86C5.894 20.1 12 20.1 12 20.1s6.106 0 7.732-.426a2.636 2.636 0 0 0 1.85-1.86C22 16.178 22 12 22 12s0-4.178-.418-5.814zM9.99 15.463V8.537l6.505 3.463-6.505 3.463z"/>
@@ -852,6 +864,24 @@
     </section>
 
   </div>
+
+  <!-- Scroll Animation Observer Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    });
+  </script>
 
 </body>
 </html>
